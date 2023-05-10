@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as o}from"./index-bfb67b23.js";const r={data(){return{}},methods:{},mounted(){}};function n(s,c,a,d,_,p){return t(),o("div",null," Products ")}const m=e(r,[["render",n]]);export{m as default};
