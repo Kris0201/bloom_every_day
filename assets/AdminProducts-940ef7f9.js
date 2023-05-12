@@ -1,1 +1,0 @@
-import{_ as t,o as e,c as o}from"./index-468e6e3b.js";const r={data(){return{}},methods:{},mounted(){}};function c(n,s,a,d,u,_){return e(),o("div",null," Products ")}const m=t(r,[["render",c]]);export{m as default};
