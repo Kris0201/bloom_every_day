@@ -4,17 +4,19 @@
 
 
 <script>
-import {  RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 export default {
   data() {
-    return {
-      
-    }
+    return {}
   },
-  components: {RouterView},
+  components: { RouterView },
 
-  mounted() {  
+  mounted() {
+    AOS.init()
   }
 }
 </script>
