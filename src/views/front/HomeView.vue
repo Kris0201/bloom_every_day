@@ -47,6 +47,42 @@
       </div>
     </section>
 
+    <section class="feature">
+      <div class="container">
+        <h2 class="text-primary feature_h2">自然與美的結合</h2>
+
+        <div class="feature_group d-md-flex" 
+           data-aos="fade-up" 
+           data-aos-duration="3000"
+        >
+          <div class="feature_circle">
+            <img src="../../assets/img/special-1.jpg" alt="" />
+          </div>
+
+          <div class="feature_content">
+            <div class="fs-6">
+              我們每日採用最新鮮的花材製作，同時也落實環保的意識，盡量以當季花草為主，減少過多資源的消耗。同時我們也注重購買者的健康，在乾燥製作的過程中特別選用品質優良的乾燥劑及染色原料，提供您安心安全的購物體驗。
+            </div>
+          </div>
+        </div>
+
+        <div class="feature_group d-md-flex flex-row-reverse" 
+           data-aos="fade-up" 
+           data-aos-duration="3000"
+        >
+          <div class="feature_circle">
+            <img src="../../assets/img/gift.jpg" alt="" />
+          </div>
+
+          <div class="feature_content">
+            <div class="fs-6">
+              每一束花都承載著我們美好的理念，我們用心編製、包裝，為的是將美帶到生活中的每個角落。美感不該是遠距離的想像，而是可以輕鬆進入我們的生活中。您的生活中，絕對有這些花束的一席之地。
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="intro">
       <div class="container">
         <div class="intro_text text-center">
@@ -65,13 +101,13 @@
     <section class="about">
       <div class="container about_container">
         <div class="row mx-auto">
-          <div
-            class="col-lg-10"
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            <div class="about_img">
+          <div class="col-lg-10">
+            <div
+              class="about_img"
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+            >
               <img src="../../assets/img/ImgSec4.png" alt="" />
             </div>
           </div>
@@ -193,6 +229,9 @@
 </template>
 
 <style lang="scss" scoped>
+.wrapper {
+  overflow-x: hidden;
+}
 .banner {
   background: #f5f5f5;
   height: 665px;
@@ -283,6 +322,41 @@
   position: absolute;
   top: -54px;
   right: -14px;
+}
+
+// feature section
+.feature {
+  background: #f5f5f5;
+}
+
+.feature_group {
+  max-width: 1200px;
+  padding: 0 0 36px 0;
+  margin: 0 auto;
+}
+
+.feature_h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.feature_circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 24px auto;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.feature_content {
+  padding: 12px 8px;
+  text-align: justify;
 }
 
 // intro section
@@ -474,6 +548,11 @@ a.item_title.text-dark-text {
 }
 
 @media screen and (min-width: 576px) {
+  .feature_content {
+    width: 500px;
+    margin: 0 auto;
+  }
+
   .promote_col_text {
     padding: 0 20px;
   }
@@ -518,6 +597,15 @@ a.item_title.text-dark-text {
   .bgSec1 {
     left: 108px;
     top: 269px;
+  }
+
+  .feature {
+    padding: 0 15px;
+  }
+
+  .feature_content {
+    width: 55%;
+    align-self: center;
   }
 
   .about_img {
