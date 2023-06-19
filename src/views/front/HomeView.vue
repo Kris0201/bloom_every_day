@@ -65,14 +65,24 @@
     <section class="about">
       <div class="container about_container">
         <div class="row mx-auto">
-          <div class="col-lg-10">
+          <div
+            class="col-lg-10"
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine"
+          >
             <div class="about_img">
               <img src="../../assets/img/ImgSec4.png" alt="" />
             </div>
           </div>
 
           <div class="col-lg-6 about_col_6">
-            <div class="about_text bg-bg-2">
+            <div
+              class="about_text bg-bg-2"
+              data-aos="fade-left"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"
+            >
               <h6 class="about_text_title_en">about us</h6>
 
               <div class="about_text_pc">
@@ -188,10 +198,9 @@
   height: 665px;
 
   > .container {
-  position: relative;
+    position: relative;
+  }
 }
-}
-
 
 .banner_title {
   position: absolute;
@@ -200,13 +209,11 @@
   white-space: nowrap;
 
   > h1 {
-  font-size: 1.75rem;
-  line-height: 2.125rem;
-  margin-bottom: 0px;
+    font-size: 1.75rem;
+    line-height: 2.125rem;
+    margin-bottom: 0px;
+  }
 }
-}
-
-
 
 .banner_img {
   width: 100%; //375px
@@ -217,13 +224,11 @@
   left: 0;
 
   > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
-}
-
- 
 
 .banner_link {
   display: block;
@@ -255,11 +260,9 @@
   margin-bottom: 72px;
 
   > img {
-  width: 100%;
+    width: 100%;
+  }
 }
-}
-
-
 
 .promote_col_text {
   position: relative;
@@ -315,14 +318,12 @@
   left: -16px;
 
   > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 0% 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0% 50%;
+  }
 }
-}
-
-
 
 .about_text {
   position: absolute;
@@ -403,11 +404,9 @@ a.mySwiper {
   color: #121212;
 
   &:hover {
-  color: #ff3d33;
+    color: #ff3d33;
+  }
 }
-}
-
-
 
 .BgSec5 {
   position: absolute;
@@ -417,14 +416,12 @@ a.mySwiper {
   right: 3px;
   z-index: 1;
 
-   img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
-}
-
-
 
 .BgSec6 {
   width: 120px;
@@ -433,14 +430,12 @@ a.mySwiper {
   top: 60%;
   left: -20px;
 
-   img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
-}
-
-
 
 .news_title_ch_pc {
   display: none;
