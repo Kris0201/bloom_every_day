@@ -43,7 +43,7 @@ export default defineStore('cart', {
 
                 const maxQty = 5 // 限制選購數量上限
 
-                // maxQty - cartItemQty = optionNum 要渲染的數量
+                // maxQty - cartItemQty = optionNum 要渲染的數量？
 
                 this.optionNum=maxQty-cartItemQty
 
