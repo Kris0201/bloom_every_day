@@ -43,17 +43,13 @@ export default defineStore('cart', {
 
                 const maxQty = 5 // 限制選購數量上限
 
-                const isTotalQtyMoreThanMaxQty = cartItemQty + qty > maxQty
+                // maxQty - cartItemQty = optionNum 要渲染的數量
 
-                if (isTotalQtyMoreThanMaxQty) {
-                    Swal.fire({
-                        title: `<h6>此商品已有<span style="color:#FF3D33;"> ${cartItemQty} </span>筆在購物車中嘍！</h6><h6>同一商品購買總數上限為<span style="color:#FF3D33;"> 5 </span>筆</h6><h6>請重新調整選購數量~</h6>`,
-                        confirmButtonColor: '#FF3D33',
-                    })
-                    return
-                }
+                this.optionNum=maxQty-cartItemQty
 
+                console.log('this.optionNum', this.optionNum)
 
+                
             }
 
 
@@ -63,10 +59,13 @@ export default defineStore('cart', {
                 "qty": qty  // api 中的 qty 數量
             }
 
+            // optionNum 維持數量上限 5
+
+
 
             axios.post(`${VITE_URL}v2/api/${VITE_PATH}/cart`, { data })
                 .then((res) => {
-                    
+
                     Swal.fire({
                         toast: true,
                         position: 'center',
@@ -107,7 +106,7 @@ export default defineStore('cart', {
 
         // 調整購物車頁面 select 數量
         updateCartItem(item) {
-            
+
             const data = {
                 product_id: item.product.id, // 產品的 id
                 qty: item.qty,
@@ -130,16 +129,16 @@ export default defineStore('cart', {
         deleteCartItem(item) {
             axios.delete(`${VITE_URL}v2/api/${VITE_PATH}/cart/${item.id}`)
                 .then((res) => {
-                    const deleteMessage=res.data.message
+                    const deleteMessage = res.data.message
                     Swal.fire({
-                        toast:true,
-                        position:'center',
-                        timer:2000,
-                        showConfirmButton:false,
-                        title:`<span style="color:#FF3D33;">商品${deleteMessage}~<span>`,
-                        background:'white'
-              
-                      })
+                        toast: true,
+                        position: 'center',
+                        timer: 2000,
+                        showConfirmButton: false,
+                        title: `<span style="color:#FF3D33;">商品${deleteMessage}~<span>`,
+                        background: 'white'
+
+                    })
                     this.getCarts();
                 })
                 .catch((err) => {

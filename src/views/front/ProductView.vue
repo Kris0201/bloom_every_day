@@ -28,7 +28,7 @@
           <div class="detail_purchase_group">
             <div class="detail_quantity">
               <select name="" id="" class="form-select" v-model="selectQty">
-                <option :value="i" v-for="i in 5" :key="`${i}1235`">
+                <option :value="i" v-for="i in optionNum" :key="`${i}1235`">
                   {{ i }}
                 </option>
               </select>
@@ -332,7 +332,8 @@ export default {
   data() {
     return {
       perProduct: {},
-      selectQty: 1 // 商品頁下拉選單數值
+      selectQty: 1, // 商品頁下拉選單數值
+      optionNum:5
     }
   },
   components: {},
