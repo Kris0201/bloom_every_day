@@ -43,13 +43,21 @@ export default defineStore('cart', {
 
                 const maxQty = 5 // 限制選購數量上限
 
-                // maxQty - cartItemQty = optionNum 要渲染的數量？
+                // maxQty - cartItemQty = optionNum 的總數
 
-                this.optionNum=maxQty-cartItemQty
 
-                console.log('this.optionNum', this.optionNum)
+                console.log('cartItemQty',cartItemQty)
+                console.log('maxQty-cartItemQty=',maxQty-cartItemQty)
 
-                
+                for (var i = 0; i <= maxQty - cartItemQty; i++) {
+                    console.log('i', i)
+                }
+
+                // this.optionNum=maxQty-cartItemQty
+
+                // console.log('this.optionNum', this.optionNum)
+
+
             }
 
 
