@@ -8,7 +8,7 @@ export default defineStore('cart', {
         return {
             carts: [],  // 購物車中的所有品項
             final_total: 0, //購物車中所有品項的總金額
-
+            maxProductNum: 5 // 統一管理商品選購上限數量
         }
 
     },
@@ -16,6 +16,21 @@ export default defineStore('cart', {
     actions: {
         // 加入購物車
         addToCart(id, qty = 1) {
+
+            // 未選擇數量不打 api
+            if(qty===0){
+                Swal.fire({
+                    toast: true,
+                    position: 'center',
+                    timer: 2000,
+                    title: `<h6 class="mb-0" style="color:white; text-align:center;">請選擇數量
+                    </h6>`,
+                    showConfirmButton: false,
+                    background: '#ff3d33'
+                })
+
+                return
+            }
 
             // 判斷購物車中是否已有相同的商品：
             // 有 → 判斷既有數量與要再加入的數量是否超過上限
@@ -40,25 +55,16 @@ export default defineStore('cart', {
                 //商品已存在於購物車中，找出其既存數量
                 const cartItemQty = this.carts[cartItemIndex].qty
                 // console.log('cartItemQty', cartItemQty)
-
+        
                 const maxQty = 5 // 限制選購數量上限
-
-                // maxQty - cartItemQty = optionNum 的總數
-
-
-                console.log('cartItemQty',cartItemQty)
-                console.log('maxQty-cartItemQty=',maxQty-cartItemQty)
-
-                for (var i = 0; i <= maxQty - cartItemQty; i++) {
-                    console.log('i', i)
+        
+                const isTotalQtyMoreThanMaxQty = cartItemQty + qty > maxQty
+        
+                if (isTotalQtyMoreThanMaxQty) {
+                    // 超過選購上限就不執行打 api
+                  return
                 }
-
-                // this.optionNum=maxQty-cartItemQty
-
-                // console.log('this.optionNum', this.optionNum)
-
-
-            }
+              }
 
 
             // 若商品不曾被加到購物車中，則打 api
@@ -66,9 +72,6 @@ export default defineStore('cart', {
                 "product_id": id,
                 "qty": qty  // api 中的 qty 數量
             }
-
-            // optionNum 維持數量上限 5
-
 
 
             axios.post(`${VITE_URL}v2/api/${VITE_PATH}/cart`, { data })

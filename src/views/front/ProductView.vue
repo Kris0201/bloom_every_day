@@ -28,15 +28,24 @@
           <div class="detail_purchase_group">
             <div class="detail_quantity">
               <select name="" id="" class="form-select" v-model="selectQty">
+                <option value="0" disabled selected>
+                  {{ optionNum ? '請選擇數量' : '已達選購數量上限' }}
+                </option>
                 <option :value="i" v-for="i in optionNum" :key="`${i}1235`">
                   {{ i }}
                 </option>
               </select>
+
+              <div class="qty_limit_info" v-if="productData">
+                商品已有 <span class="text-primary">{{ productData.qty }}</span> 筆在購物車中
+              </div>
             </div>
+
             <div class="detail_purchase">
               <button
+                :disabled="optionNum === 0"
                 class="btn fs-6 text-center add_btn"
-                @click="addToCart(perProduct.id, selectQty)"
+                @click="addToCart(perProduct.id, selectQty), (selectQty = 0)"
               >
                 加入購物車
               </button>
@@ -273,7 +282,7 @@ h5.detail_title {
   }
 
   .detail_quantity {
-    width: 210px;
+    // width: 210px;
     align-self: center;
   }
 
@@ -318,8 +327,6 @@ h5.detail_title {
     width: 1000px;
   }
 }
-
-
 </style>
 
 <script>
@@ -332,14 +339,38 @@ export default {
   data() {
     return {
       perProduct: {},
-      selectQty: 1, // 商品頁下拉選單數值
-      optionNum:5
+      selectQty: 0 // 來自下拉選單所選的數值 (受 optionNum 影響)
     }
   },
   components: {},
 
   computed: {
-    ...mapState(cartStore, ['carts'])
+    // productData 取得當前頁面的商品的物件資料，確認是否已存在於購物車內
+    productData() {
+      const { id } = this.$route.params
+
+      const cartIndex = this.carts.findIndex((i) => i.product_id === id)
+
+      if (cartIndex < 0) {
+        // 若 cartIndex = -1 表示此商品未曾被加入到購物車內
+        return null
+      } else {
+        return this.carts[cartIndex]
+      }
+    },
+
+    // optionNum：下拉選單選項數
+    optionNum() {
+      let displayProductNum = this.maxProductNum
+
+      if (this.productData) {
+        displayProductNum = displayProductNum - this.productData.qty
+      }
+
+      return displayProductNum
+    },
+
+    ...mapState(cartStore, ['carts', 'maxProductNum'])
   },
 
   methods: {
